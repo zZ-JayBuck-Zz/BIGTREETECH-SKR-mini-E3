@@ -61,7 +61,8 @@
 // Filament Runout Sensor
 //
 #ifndef FIL_RUNOUT_PIN
-  #define FIL_RUNOUT_PIN                    PC2   // "E0-STOP"
+
+  #define FIL_RUNOUT_PIN                    PC2   // "E0-STOP" "JMB"
 #endif
 
 //
