@@ -1,13 +1,21 @@
 import os
 Import("env")
 
-STM32_FLASH_SIZE = 256
+STM32_FLASH_SIZE = 512
 
+'''
 for define in env['CPPDEFINES']:
     if define[0] == "VECT_TAB_ADDR":
         env['CPPDEFINES'].remove(define)
     if define[0] == "STM32_FLASH_SIZE":
         STM32_FLASH_SIZE = define[1]
+'''
+def replace_define(field, value):
+    envdefs = env['CPPDEFINES'].copy()
+    for define in envdefs:
+        if define[0] == field:
+            env['CPPDEFINES'].remove(define)
+    env['CPPDEFINES'].append((field, value))
 
 # Relocate firmware from 0x08000000 to 0x08007000
 env['CPPDEFINES'].append(("VECT_TAB_ADDR", "0x08007000"))
